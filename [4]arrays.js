@@ -3,10 +3,8 @@
 // Решение
 function halfArraySum(arr) {
   if (!Array.isArray(arr)) {return 'Ожидался массив'}
-  let acc = 0;
-  for (let i = 0; i < Math.ceil(arr.length / 2); i++) {
-    acc += arr[i];
-  }
+  let index = Math.ceil(arr.length / 2);
+  let acc = arr.slice(0, index).reduce((acc, val) => acc += val, 0);
   return acc;
 }
 
