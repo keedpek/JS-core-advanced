@@ -5,7 +5,7 @@
 
 function fetchData(url, runtime) {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       reject('Превышено время ожидания ответа на запрос');
     }, runtime);
 
@@ -26,6 +26,7 @@ function fetchData(url, runtime) {
 
     fetchPromise
       .then(response => {
+        clearTimeout(timeout);
         if (!response.ok) {
           reject(`Непредвиденная ошибка ${response.status}`);
         }
